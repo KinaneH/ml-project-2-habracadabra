@@ -16,14 +16,14 @@ from dictionaries import *
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 from ekphrasis.classes.segmenter import Segmenter
 from ekphrasis.classes.preprocessor import TextPreProcessor
 from ekphrasis.classes.tokenizer import SocialTokenizer
 from ekphrasis.dicts.emoticons import emoticons
 from ekphrasis.dicts.noslang.slangdict import slangdict
 
-# seg= Segmenter("twitter")
-# lm = nltk.WordNetLemmatizer()
+
 
 def clean_tweet(tweet):
     """
@@ -50,10 +50,11 @@ def clean_tweet(tweet):
     #remove all punctuation left
     tweet = remove_punct(tweet)
     #lemmatize
-    # tweet = word_tokenize(tweet)
-    # tweet = lemmatizer(tweet)
+    tweet = word_tokenize(tweet)
+    tweet = lemmatizer(tweet)
     #tweet = ' '.join(word for word in tweet)
-    tweet = ' '.join(tweet.split())  # Ensure word-level joining
+    tweet = ' '.join(tweet) 
+    tweet = ' '.join(tweet.split())  
 
     return tweet 
 
@@ -87,7 +88,7 @@ def unpack_hashtag(text):
     Returns unpacked version of a hashtag
     """
     words = text.split()
-    return ' '.join([seg.segment(word=w[1:]) if (w[0] == '#') else w for w in words])
+    return ' '.join([Segmenter("twitter").segment(word=w[1:]) if (w[0] == '#') else w for w in words])
 
 def remove_stop_words(text):
     """
@@ -112,7 +113,7 @@ def lemmatizer(data):
     """
     Returns lemmatized version of a sentence 
     """
-    lm = Lem
+    lm = WordNetLemmatizer()
     return [lm.lemmatize(w) for w in data]  
 
 def handle_emoticons(text):
@@ -176,4 +177,3 @@ if __name__ == '__main__':
     df = pd.DataFrame(rows, columns=["ID", "Text"]).set_index("ID")
 
     breakpoint()
-
