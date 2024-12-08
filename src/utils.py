@@ -88,7 +88,7 @@ def get_model(model_name):
 def evaluate_model(model, X_val, y_val, metric='f1'):
     y_val_pred = model.predict(X_val)
     if metric == 'f1':
-        return f1_score(y_val, y_val_pred, average='binary')  # Change 'binary' to 'macro', 'micro', or 'weighted' for multi-class
+        return f1_score(y_val, y_val_pred, average='binary')
     elif metric == 'accuracy':
         return accuracy_score(y_val, y_val_pred)
     else:
