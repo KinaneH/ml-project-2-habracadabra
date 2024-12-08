@@ -1,14 +1,20 @@
 import numpy as np
+import pandas as pd
 import string
 import re
+import os
+import sys
 
-import pandas as pd
 
-from dictionaries import*
+# Dynamically add the project root to the Python path
+current_file_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current file
+project_root = os.path.abspath(os.path.join(current_file_dir))
+sys.path.append(project_root)
+
+from dictionaries import *
 
 import nltk
 from nltk.corpus import stopwords
-import os
 from nltk.tokenize import word_tokenize
 from ekphrasis.classes.segmenter import Segmenter
 from ekphrasis.classes.preprocessor import TextPreProcessor
@@ -46,7 +52,9 @@ def clean_tweet(tweet):
     #lemmatize
     # tweet = word_tokenize(tweet)
     # tweet = lemmatizer(tweet)
-    tweet = ' '.join(word for word in tweet)
+    #tweet = ' '.join(word for word in tweet)
+    tweet = ' '.join(tweet.split())  # Ensure word-level joining
+
     return tweet 
 
 def remove_punct(text):
@@ -118,24 +126,24 @@ def handle_emoticons(text):
     return ' '.join(emojis[w] if w in emojis else w for w in text.split())
 
 #
-# text_processor = TextPreProcessor(
-#     normalize=['url', 'email', 'percent', 'money', 'phone', 'user','time', 'url', 'date', 'number'],
-#     # terms that will be annotated
-#     annotate={"hashtag", "allcaps", "elongated", "repeated",
-#               'emphasis', 'censored'},
-#     # corpus from which the word statistics are going to be used for word segmentation
-#     segmenter="twitter",
-#     # corpus from which the word statistics are going to be used for spell correction
-#     corrector="twitter",
-#     unpack_hashtags=True,  # perform word segmentation on hashtags
-#     unpack_contractions=True,  # Unpack contractions (can't -> can not)
-#     spell_correct_elong=True,  # spell correction for elongated words
-#     # the tokenizer, should take as input a string and return a list of tokens
-#     tokenizer=SocialTokenizer(lowercase=True).tokenize,
-#     #list of dictionaries, for replacing tokens extracted from the text,
-#     #with other expressions. You can pass more than one dictionaries.
-#     dicts=[emoticons]
-# )
+text_processor = TextPreProcessor(
+    normalize=['url', 'email', 'percent', 'money', 'phone', 'user','time', 'url', 'date', 'number'],
+    # terms that will be annotated
+    annotate={"hashtag", "allcaps", "elongated", "repeated",
+              'emphasis', 'censored'},
+    # corpus from which the word statistics are going to be used for word segmentation
+    segmenter="twitter",
+    # corpus from which the word statistics are going to be used for spell correction
+    corrector="twitter",
+    unpack_hashtags=True,  # perform word segmentation on hashtags
+    unpack_contractions=True,  # Unpack contractions (can't -> can not)
+    spell_correct_elong=True,  # spell correction for elongated words
+    # the tokenizer, should take as input a string and return a list of tokens
+    tokenizer=SocialTokenizer(lowercase=True).tokenize,
+    #list of dictionaries, for replacing tokens extracted from the text,
+    #with other expressions. You can pass more than one dictionaries.
+    dicts=[emoticons]
+)
 
 def clean_processor(text) : 
     text = " ".join(text_processor.pre_process_doc(text))
