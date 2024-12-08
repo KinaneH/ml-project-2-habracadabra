@@ -1,5 +1,8 @@
 # Configuration for file paths, hyperparameters, and settings
 
+# Random seed
+SEED = 27
+
 # File paths
 TRAIN_POS_PATH = "../data/train_pos.txt"
 TRAIN_NEG_PATH = "../data/train_neg.txt"

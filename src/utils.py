@@ -1,19 +1,21 @@
 import os
 import sys
-
-# Dynamically add the project root to the Python path
-project_root = os.path.abspath(os.path.join(os.getcwd()))
-sys.path.append(project_root)
-
 import random
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import f1_score
+from sklearn.metrics import accuracy_score, f1_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import LinearSVC
+
+# Dynamically add the project root to the Python path
+PROJECT_ROOT = os.path.abspath(os.getcwd())
+sys.path.append(PROJECT_ROOT)
+
+from src.cfg import *
 from src.data_cleaning.cleaning import clean_tweet
+
 
 
 # Preprocessing
@@ -51,7 +53,7 @@ def preprocess_train_data(pos_tweets, neg_tweets, show_lengths=False, show_sampl
             print("{:<50} | {:<50}".format(original[:50], cleaned[:50]))  # Truncate for readability
 
     # Split into training and validation sets
-    return train_test_split(cleaned_tweets, labels, test_size=0.2, random_state=123)
+    return train_test_split(cleaned_tweets, labels, test_size=0.2, random_state=SEED)
 
 def preprocess_test_data(test_path):
     # Load test data
