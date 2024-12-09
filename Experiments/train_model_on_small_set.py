@@ -22,8 +22,8 @@ if __name__ == "__main__":
 
     path = os.path.join(os.path.expanduser('~'), 'ML_course', 'projects', 'project2', 'Data', 'twitter-datasets')
     # Read the file into a DataFrame
-    file_path_neg = os.path.join(path, 'train_neg_full.txt')
-    file_path_pos = os.path.join(path, 'train_pos_full.txt')
+    file_path_neg = os.path.join(path, 'train_neg.txt')
+    file_path_pos = os.path.join(path, 'train_pos.txt')
 
     # Load data
     pos_set, neg_set = load_data(path_train_pos=file_path_pos, path_train_neg=file_path_neg)
