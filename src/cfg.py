@@ -1,7 +1,9 @@
 # Configuration for file paths, hyperparameters, and settings
 
 # Random seed
-SEED = 27
+SEED1 = 27
+SEED2 = 2727
+SEED3 = 272727
 
 # File paths
 TRAIN_POS_PATH = "../data/train_pos.txt"
@@ -18,14 +20,13 @@ PARAM_GRID = {
         'vectorizer__ngram_range': [(1, 1), (1, 2), (1, 3), (1, 4)],
         'vectorizer__min_df': [1, 5, 10],
         'classifier__C': [0.001, 0.01, 0.1, 1, 10, 100],
-        'classifier__penalty': ['l2', None]
+        'classifier__penalty': ['l2']
     },
     'naive_bayes': {
         'vectorizer__ngram_range': [(1, 1), (1, 2), (1, 3), (1, 4)],
         'vectorizer__min_df': [1, 5, 10],
         'classifier__alpha': [0.001, 0.01, 0.1, 1, 10]
     },
-
     'svm': {
         'vectorizer__ngram_range': [(1, 1), (1, 2), (1, 3), (1, 4)],
         'vectorizer__min_df': [1, 5, 10],

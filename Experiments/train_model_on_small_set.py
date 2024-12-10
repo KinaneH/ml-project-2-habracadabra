@@ -1,13 +1,18 @@
+import os
+import sys
 import torch
 from sklearn.model_selection import train_test_split
 from torch import nn
 from transformers import AutoModel, AutoTokenizer
 import pandas as pd
 
+PROJECT_ROOT = os.path.abspath(os.path.join(os.getcwd(), ".."))
+sys.path.append(PROJECT_ROOT)
+
 from Models.MLPwithText import CustomMLP, train_model, evaluate_model
-from helpers.data_loader import create_dataloader, TextDataset
-from helpers.helper import load_data
-import os
+from src.helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.helper import load_data
+from src.cfg import *
 
 
 if __name__ == "__main__":
@@ -16,17 +21,15 @@ if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     pretrained_model = AutoModel.from_pretrained(MODEL_NAME, output_hidden_states=True)
 
+    path = os.path.join(PROJECT_ROOT, 'data', 'weights')
+
     # Define MLP (input_dim = hidden size of pretrained model)
     hidden_size = 768  # For RoBERTa-base
     mlp = CustomMLP(input_dim=hidden_size, hidden_dim=128, output_dim=1)  # Binary classification
 
-    path = os.path.join(os.path.expanduser('~'), 'ML_course', 'projects', 'project2', 'Data', 'twitter-datasets')
-    # Read the file into a DataFrame
-    file_path_neg = os.path.join(path, 'train_neg.txt')
-    file_path_pos = os.path.join(path, 'train_pos.txt')
-
     # Load data
-    pos_set, neg_set = load_data(path_train_pos=file_path_pos, path_train_neg=file_path_neg)
+    pos_set, neg_set = load_data(path_train_pos=TRAIN_POS_FULL_PATH, path_train_neg=TRAIN_NEG_FULL_PATH)
+
     df1 = pd.concat([pos_set, neg_set], ignore_index=True, axis=0)
 
     # Shuffle the DataFrame to mix positive and negative samples

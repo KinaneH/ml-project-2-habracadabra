@@ -1,13 +1,19 @@
+import os
+import sys
 import torch
 from torch import nn
 from transformers import AutoModel, AutoTokenizer
 import pandas as pd
 from torch.utils.data import DataLoader
 
+# Dynamically add the project root to the Python path
+PROJECT_ROOT = os.path.abspath(os.path.join(os.getcwd()))
+sys.path.append(PROJECT_ROOT)
+
+
 from Experiments.experiment1_gpt import outputs
-from helpers.data_loader import create_dataloader, TextDataset
-from helpers.helper import load_data
-import os
+from src.helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.helper import load_data
 
 ##vim or cat file to see outputs or errors
 
