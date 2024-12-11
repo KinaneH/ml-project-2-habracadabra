@@ -1,23 +1,29 @@
 import numpy as np
+import pandas as pd
 import string
 import re
+import os
+import sys
 
-import pandas as pd
 
-from dictionaries import*
+# Dynamically add the project root to the Python path
+current_file_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of the current file
+project_root = os.path.abspath(os.path.join(current_file_dir))
+sys.path.append(project_root)
+
+from dictionaries import *
 
 import nltk
 from nltk.corpus import stopwords
-import os
 from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 from ekphrasis.classes.segmenter import Segmenter
 from ekphrasis.classes.preprocessor import TextPreProcessor
 from ekphrasis.classes.tokenizer import SocialTokenizer
 from ekphrasis.dicts.emoticons import emoticons
 from ekphrasis.dicts.noslang.slangdict import slangdict
 
-# seg= Segmenter("twitter")
-# lm = nltk.WordNetLemmatizer()
+
 
 def clean_tweet(tweet):
     """
@@ -44,9 +50,12 @@ def clean_tweet(tweet):
     #remove all punctuation left
     tweet = remove_punct(tweet)
     #lemmatize
-    # tweet = word_tokenize(tweet)
-    # tweet = lemmatizer(tweet)
-    tweet = ' '.join(word for word in tweet)
+    tweet = word_tokenize(tweet)
+    tweet = lemmatizer(tweet)
+    #tweet = ' '.join(word for word in tweet)
+    tweet = ' '.join(tweet) 
+    tweet = ' '.join(tweet.split())  
+
     return tweet 
 
 def remove_punct(text):
@@ -79,7 +88,7 @@ def unpack_hashtag(text):
     Returns unpacked version of a hashtag
     """
     words = text.split()
-    return ' '.join([seg.segment(word=w[1:]) if (w[0] == '#') else w for w in words])
+    return ' '.join([Segmenter("twitter").segment(word=w[1:]) if (w[0] == '#') else w for w in words])
 
 def remove_stop_words(text):
     """
@@ -104,7 +113,7 @@ def lemmatizer(data):
     """
     Returns lemmatized version of a sentence 
     """
-    lm = Lem
+    lm = WordNetLemmatizer()
     return [lm.lemmatize(w) for w in data]  
 
 def handle_emoticons(text):
@@ -118,24 +127,24 @@ def handle_emoticons(text):
     return ' '.join(emojis[w] if w in emojis else w for w in text.split())
 
 #
-# text_processor = TextPreProcessor(
-#     normalize=['url', 'email', 'percent', 'money', 'phone', 'user','time', 'url', 'date', 'number'],
-#     # terms that will be annotated
-#     annotate={"hashtag", "allcaps", "elongated", "repeated",
-#               'emphasis', 'censored'},
-#     # corpus from which the word statistics are going to be used for word segmentation
-#     segmenter="twitter",
-#     # corpus from which the word statistics are going to be used for spell correction
-#     corrector="twitter",
-#     unpack_hashtags=True,  # perform word segmentation on hashtags
-#     unpack_contractions=True,  # Unpack contractions (can't -> can not)
-#     spell_correct_elong=True,  # spell correction for elongated words
-#     # the tokenizer, should take as input a string and return a list of tokens
-#     tokenizer=SocialTokenizer(lowercase=True).tokenize,
-#     #list of dictionaries, for replacing tokens extracted from the text,
-#     #with other expressions. You can pass more than one dictionaries.
-#     dicts=[emoticons]
-# )
+text_processor = TextPreProcessor(
+    normalize=['url', 'email', 'percent', 'money', 'phone', 'user','time', 'url', 'date', 'number'],
+    # terms that will be annotated
+    annotate={"hashtag", "allcaps", "elongated", "repeated",
+              'emphasis', 'censored'},
+    # corpus from which the word statistics are going to be used for word segmentation
+    segmenter="twitter",
+    # corpus from which the word statistics are going to be used for spell correction
+    corrector="twitter",
+    unpack_hashtags=True,  # perform word segmentation on hashtags
+    unpack_contractions=True,  # Unpack contractions (can't -> can not)
+    spell_correct_elong=True,  # spell correction for elongated words
+    # the tokenizer, should take as input a string and return a list of tokens
+    tokenizer=SocialTokenizer(lowercase=True).tokenize,
+    #list of dictionaries, for replacing tokens extracted from the text,
+    #with other expressions. You can pass more than one dictionaries.
+    dicts=[emoticons]
+)
 
 def clean_processor(text) : 
     text = " ".join(text_processor.pre_process_doc(text))
@@ -168,4 +177,3 @@ if __name__ == '__main__':
     df = pd.DataFrame(rows, columns=["ID", "Text"]).set_index("ID")
 
     breakpoint()
-

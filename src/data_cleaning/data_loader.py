@@ -1,6 +1,6 @@
 import pandas as pd
 
-def load_data(file_path):
+""" def load_data(file_path):
     rows = []
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
@@ -11,4 +11,13 @@ def load_data(file_path):
 
         # Create a DataFrame from the processed rows
     df = pd.DataFrame(rows, columns=["ID", "Text"]).set_index("ID")
+    return df """
+
+def load_data(file_path):
+    with open(file_path, "r", encoding="utf-8") as file:
+        # Read all lines, strip whitespace, and filter out empty lines
+        rows = [line.strip() for line in file if line.strip()]
+
+    # Create a DataFrame with a single "Text" column
+    df = pd.DataFrame(rows, columns=["Text"])
     return df
