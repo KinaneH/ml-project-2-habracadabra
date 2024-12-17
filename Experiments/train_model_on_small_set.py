@@ -14,7 +14,7 @@ sys.path.append(PROJECT_ROOT)
 from Models.MLPwithText import CustomMLP, train_model, evaluate_model
 from src.helpers.data_loader import create_dataloader, TextDataset
 from src.helpers.helper import load_data
-from src.cfg import *  # This likely contains file paths and other configuration constants.
+from src.cfg import *  
 
 if __name__ == "__main__":
     # Define the name of the pretrained model to use. 
