@@ -6,8 +6,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 from Data_Cleaning.cleaning import clean_tweet
-from helpers.data_loader import TextDataset, create_dataloader
-from helpers.helper import load_data
+from src.helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.helper import load_data
 
 
 if __name__ == "__main__":
