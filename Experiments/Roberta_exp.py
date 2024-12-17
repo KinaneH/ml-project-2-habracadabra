@@ -31,8 +31,8 @@ if __name__ == "__main__":
     )
     
     # Define the file paths for negative and positive training data
-    file_path_neg = os.path.join(base_path, 'train_neg.txt')
-    file_path_pos = os.path.join(base_path, 'train_pos.txt')
+    file_path_neg = os.path.join(base_path, 'train_neg_full.txt')
+    file_path_pos = os.path.join(base_path, 'train_pos_full.txt')
 
     # Load the positive and negative datasets into separate DataFrames
     pos_set, neg_set = load_data(
