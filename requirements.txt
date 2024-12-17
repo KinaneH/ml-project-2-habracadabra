@@ -4,3 +4,4 @@ scikit-learn
 nltk
 torch
 transformers
+cardiffnlp/twitter-roberta-base-sentiment-latest
