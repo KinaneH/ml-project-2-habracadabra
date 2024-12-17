@@ -12,7 +12,7 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
     - **`submissions_classifiers`:** A directory containing CSV files with predictions for the test set, formatted for submission. Each file corresponds to a specific classifier and random seed.
 
 - **Models** 
-    -**`MLPwithText.py`:** This file demonstrates training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
+    - **`MLPwithText.py`:**-This file demonstrates training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
 
 - **Experiments** 
     -**`train_model_on_small_set.py`:** This file builds upon the MLP-with-text-file pipeline by integrating a pretrained sentiment model (e.g., cardiffnlp/twitter-roberta-base-sentiment-latest). It includes loading and splitting a text dataset, preprocessing with a tokenizer, generating embeddings, training the MLP classifier, saving model weights, and evaluating performance on a validation set.
