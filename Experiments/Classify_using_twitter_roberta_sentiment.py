@@ -5,7 +5,7 @@ from transformers import AutoModelForSequenceClassification
 from transformers import AutoTokenizer, AutoConfig
 from scipy.special import softmax
 
-from helpers.helper import load_data, apply_model_to_tweet
+from src.helpers.helper import load_data, apply_model_to_tweet
 from twitter_exp import preprocess, score_to_sentiment
 
 if __name__ == "__main__":
