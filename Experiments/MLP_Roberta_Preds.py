@@ -7,7 +7,8 @@ import pandas as pd
 import os
 
 from Models.MLPwithText import CustomMLP
-from helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.data_loader import create_dataloader, TextDataset
+
 
 
 def create_csv_submission(ids, y_pred, name):
