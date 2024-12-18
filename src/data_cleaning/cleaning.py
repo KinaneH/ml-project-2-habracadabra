@@ -269,28 +269,5 @@ def handle_slang(text):
     return ' '.join(slangdict[w] if w in slangdict else w for w in text.split())
 
 
-if __name__ == '__main__':
-    # Load the slang dictionary from a pickle file
-    slang = pd.read_pickle('Data_Cleaning/slangdict.pickle')
 
-    # Define the path to the Twitter datasets directory
-    path = os.path.join(os.path.expanduser('~'), 'ML_course', 'projects', 'project2', 'Data', 'twitter-datasets')
-    
-    # Specify the path to the test data file
-    file_path = os.path.join(path, 'test_data.txt')
-    
-    # Initialize a list to store processed rows
-    rows = []
-    
-    # Open and read the test data file
-    with open(file_path, "r", encoding="utf-8") as file:
-        for line in file:
-            # Split each line at the first comma to separate ID and Text
-            split_line = line.strip().split(",", 1)
-            if len(split_line) == 2:  # Ensure both ID and Text are present
-                rows.append(split_line)
-
-    # Create a DataFrame from the processed rows with 'ID' as the index
-    df = pd.DataFrame(rows, columns=["ID", "Text"]).set_index("ID")
-    
 
