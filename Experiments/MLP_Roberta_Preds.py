@@ -49,7 +49,7 @@ if __name__ == "__main__":
     output_dim = 1
     lr = 1e-4
     max_length = 128
-    batch_size = 900
+    batch_size = 800
 
     #file name
     name = (f'mlp_ls={lr}_max_len={max_length}'
@@ -75,7 +75,6 @@ if __name__ == "__main__":
 
     test_df  = pd.read_csv(file_path_df, sep = '\r',  names = ['Text'])
     test_df.insert(1, 'Target', 0)
-    breakpoint()
 
 
     test_dataset = TextDataset(test_df, tokenizer, max_length)
