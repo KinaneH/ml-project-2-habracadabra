@@ -35,29 +35,3 @@ def create_dataloader(dataframe, tokenizer, max_length, batch_size):
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return dataloader
 
-if __name__ == '__main__':
-
-    # Load tokenizer (e.g., for RoBERTa)
-    MODEL_NAME = "cardiffnlp/twitter-roberta-base-sentiment-latest"
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-
-    # Define parameters
-    max_length = 128  # Maximum sequence length
-    batch_size = 32   # Batch size
-
-    # Example dataframe (replace with your actual dataframe)
-    import pandas as pd
-    data = {'text': ["I love this!", "I hate this!"], 'Target': [1, -1]}
-    df = pd.DataFrame(data)
-
-    # Create DataLoader
-    dataloader = create_dataloader(df, tokenizer, max_length, batch_size)
-
-    # Iterate over batches
-    for batch in dataloader:
-        print(batch)
-        # Access input_ids, attention_mask, and target
-        input_ids = batch['input_ids']
-        attention_mask = batch['attention_mask']
-        targets = batch['target']
-        breakpoint()
