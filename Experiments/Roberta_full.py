@@ -6,7 +6,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from sklearn.metrics import f1_score
 
-from Data_Cleaning.cleaning import clean_tweet
+from src.data_cleaning.cleaning import clean_tweet
 from src.helpers.data_loader import create_dataloader, TextDataset
 from src.helpers.helper import load_data
 
