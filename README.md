@@ -7,9 +7,14 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
 
 ## Files description
 - **classifiers**  
+    - **submissions_classifiers:** A directory containing CSV files with predictions for the test set, formatted for submission. Each file corresponds to a specific classifier and random seed.
+
     - **`classifiers.ipynb`:** This notebook implements the pipeline for training and evaluating classical machine learning classifiers using TF-IDF features. Specifically, we test three classifiers: Naive Bayes, Logistic Regression, and Support Vector Machines. The pipeline includes data preprocessing, hyperparameter tuning via GridSearchCV, evaluation on the validation set, and generation of predictions for submission.
 
-    - **`submissions_classifiers`:** A directory containing CSV files with predictions for the test set, formatted for submission. Each file corresponds to a specific classifier and random seed.
+    - **`run.ipynb`:** This notebook contains the code for our optimized solution to the project challenge. 
+    - **`final_submission.csv`:** Final predictions using a linear SVM (C=1) with TfidfVectorizer (ngram_range=(1,3), min_df=1) and with the seed set to 27.
+
+
 
 - **Models** 
     - **`MLPwithText.py`:**- Constructs our MLP and functions for training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
@@ -28,13 +33,15 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
     - **`test_data.txt`:** Test set containing 10,000 tweets.
 
 - **src**
+    - **data_cleaning:**
+    - **helpers:**
     - **`cfg.py`:** A configuration file that defines file paths, random seeds, and hyperparameter grids for Logistic Regression, Naive Bayes, and SVM classifiers.
-    - **`utils.py`:** Contains utility functions for data loading, preprocessing, model selection, evaluation, and saving predictions, enabling a modular and streamlined workflow.
+    - **`utils.py`:** Contains utility functions for data preprocessing, model selection, evaluation, and saving predictions, enabling a modular and streamlined workflow.
 
 
 - **`ml-project-2-habracadabra.pdf`:** This is the PDF report of the project, summarizing our results.
 
-- **`run.py`:** This notebook contains the code for our optimized solution to the project challenge. 
+
 
 
 ## References for Packages  
