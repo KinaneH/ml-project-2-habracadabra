@@ -12,6 +12,7 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
     - **`classifiers.ipynb`:** This notebook implements the pipeline for training and evaluating classical machine learning classifiers using TF-IDF features. Specifically, we test three classifiers: Naive Bayes, Logistic Regression, and Support Vector Machines. The pipeline includes data preprocessing, hyperparameter tuning via GridSearchCV, evaluation on the validation set, and generation of predictions for submission.
 
     - **`run.ipynb`:** This notebook contains the code for our optimized solution to the project challenge. 
+    - **`visuals.ipynb`:** This notebook includes the code used to generate Figure 1 featured in the report.
     - **`final_submission.csv`:** Final predictions using a linear SVM (C=1) with TfidfVectorizer (ngram_range=(1,3), min_df=1) and with the seed set to 27.
    
 
