@@ -48,15 +48,6 @@ if __name__ == "__main__":
     
     # Apply softmax to convert logits into probabilities.
     scores = softmax(scores)
-    
-    # (Optional) TF model loading code is commented out here, as we only use PyTorch above.
-    # model = TFAutoModelForSequenceClassification.from_pretrained(MODEL)
-    # model.save_pretrained(MODEL)
-    # text = "Covid cases are increasing fast!"
-    # encoded_input = tokenizer(text, return_tensors='tf')
-    # output = model(encoded_input)
-    # scores = output[0][0].numpy()
-    # scores = softmax(scores)
 
     # The model's config contains label mappings: config.id2label maps class indices to string labels.
     # We sort the scores in descending order to see which sentiment is most likely.
