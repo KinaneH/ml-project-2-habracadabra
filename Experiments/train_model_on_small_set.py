@@ -58,7 +58,7 @@ if __name__ == "__main__":
     # Set the maximum sequence length for tokenization.
     max_length = 128
     # Set the batch size for DataLoaders.
-    batch_size = 900
+    batch_size = 800
 
     # Create custom datasets. TextDataset likely tokenizes the text and stores input IDs, attention masks, etc.
     train_dataset = TextDataset(train_df, tokenizer, max_length)
@@ -80,8 +80,7 @@ if __name__ == "__main__":
     # Set the number of training epochs.
     num_epochs = 4
 
-    # Redefine some variables for clarity (optional repetition for clarity)
-    hidden_size = 768
+    # variables defined to save model with parameters
     hidden_dim = 128
     lr = 1e-4
 
@@ -99,4 +98,5 @@ if __name__ == "__main__":
     print("saved successfully")
 
     # Evaluate the model on the validation dataset to check performance (e.g., accuracy).
-    evaluate_model(val_dataloader, pretrained_model, mlp, device)
+    accuracy, all_preds, all_targets = evaluate_model(val_dataloader, pretrained_model, mlp, device)
+
