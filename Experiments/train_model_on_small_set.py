@@ -98,5 +98,5 @@ if __name__ == "__main__":
     print("saved successfully")
 
     # Evaluate the model on the validation dataset to check performance (e.g., accuracy).
-    accuracy, all_preds, all_targets = evaluate_model(val_dataloader, pretrained_model, mlp, device)
+    evaluate_model(val_dataloader, pretrained_model, mlp, device)
 
