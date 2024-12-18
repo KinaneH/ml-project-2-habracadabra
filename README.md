@@ -36,7 +36,8 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
     - **data_cleaning:**
     - **helpers:**
     - **`cfg.py`:** A configuration file that defines file paths, random seeds, and hyperparameter grids for Logistic Regression, Naive Bayes, and SVM classifiers.
-    - **`utils.py`:** Contains utility functions for data preprocessing, model selection, evaluation, and saving predictions, enabling a modular and streamlined workflow.
+    - **`utils_classifier.py`:** A utility script with functions for data loading, preprocessing, model selection, evaluation, and saving predictions, designed to streamline classifier experiments.
+
 
 
 - **`ml-project-2-habracadabra.pdf`:** This is the PDF report of the project, summarizing our results.

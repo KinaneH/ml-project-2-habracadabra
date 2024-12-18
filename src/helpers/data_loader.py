@@ -4,30 +4,6 @@ from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer
 
 
-def load_data_classifiers(file_path):
-    """
-    Load text data from a specified file and convert it into a pandas DataFrame.
-
-    Args:
-        file_path (str): The path to the file containing the text data.
-                         Each line in the file should represent a single data entry.
-
-    Returns:
-        pd.DataFrame: A DataFrame containing the loaded text data in a column named "Text".
-    """
-    # Open the file in read mode with UTF-8 encoding
-    with open(file_path, "r", encoding="utf-8") as file:
-        # Read all lines from the file, strip surrounding whitespace,
-        # and exclude any empty lines
-        rows = [line.strip() for line in file if line.strip()]
-
-    # Create a pandas DataFrame with the processed lines
-    # The DataFrame will have a single column named "Text"
-    df = pd.DataFrame(rows, columns=["Text"])
-
-    # Return the DataFrame
-    return df
-
 class TextDataset(torch.utils.data.Dataset):
     def __init__(self, dataframe, tokenizer, max_length):
         self.texts = dataframe['Text'].tolist()
