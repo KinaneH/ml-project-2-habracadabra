@@ -1,7 +1,7 @@
 # ml-project-2-habracadabra
 
 ## Introduction
-This project focuses on sentiment classification of tweets, leveraging both traditional machine learning and transformer-based approaches. We first implemented a pipeline using TF-IDF features as input for three classical classification algorithms: Naive Bayes, Logistic Regression, and Support Vector Machines (SVM), with hyperparameter tuning performed through grid search and evaluation across multiple seeds. To further improve performance, we then tested a pre-trained Twitter-specific RoBERTa model and designed a lightweight Multi-Layer Perceptron (MLP) on top of its embeddings for binary sentiment classification.
+This project focuses on sentiment classification of tweets, leveraging both traditional machine learning and transformer-based approaches. We first implemented a pipeline using TF-IDF features as input for three classical classification algorithms: Naive Bayes, Logistic Regression, and Support Vector Machines (SVM), with hyperparameter tuning performed through grid search and evaluation across multiple seeds. To try to further improve performance, we then tested a pre-trained Twitter-specific RoBERTa model and designed a lightweight Multi-Layer Perceptron (MLP) on top of its embeddings for binary sentiment classification.
 
 This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcrano (jack.pulcrano@epfl.ch), and Kinane Habra (kinane.habra@epfl.ch) for the course CS-433: Machine Learning at the EPFL.
 
