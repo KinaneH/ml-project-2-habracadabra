@@ -37,7 +37,7 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
        - **`data_loader.py`:** Reads and loads the necessary data into a dataframe.
        - **`dictionnaries.py`:** Contains the ekphrasis dictionnary used to replace symbols with words.
    - **`helpers`:**
-       - **`data_loader.py`:** Defines the `TextDataset` class and the `create_dataloader` function. The `TextDataset` class handles the tokenization of text data and preparation of input features required by transformer models, converting text and target labels from a pandas DataFrame into tokenized PyTorch tensors. The `create_dataloader` function facilitates the creation of a PyTorch `DataLoader`, enabling efficient batching and shuffling of data for model training and evaluation.
+       - **`data_loader.py`:** Provides TextDataset and create_dataloader. TextDataset tokenizes text and converts inputs/labels to PyTorch tensors. create_dataloader builds a DataLoader for efficient batching and shuffling.
        - **`helper.py`:** Provides functions to load and preprocess labeled positive and negative tweets from text files and to apply a pre-trained transformer model to individual tweets for sentiment classification.
 
     - **`cfg.py`:** A configuration file that defines file paths, random seeds, and hyperparameter grids for Logistic Regression, Naive Bayes, and SVM classifiers.
