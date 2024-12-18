@@ -21,14 +21,7 @@ if __name__ == "__main__":
     model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
     
     # Define the path to the directory containing Twitter datasets
-    base_path = os.path.join(
-        os.path.expanduser('~'), 
-        'ML_course', 
-        'projects', 
-        'project2', 
-        'Data', 
-        'twitter-datasets'
-    )
+    base_path = os.path.join(os.path.expanduser('~'), 'twitter-datasets')
     
     # Define the file paths for negative and positive training data
     file_path_neg = os.path.join(base_path, 'train_neg_full.txt')
@@ -42,7 +35,7 @@ if __name__ == "__main__":
     
     # Set parameters for tokenization and batching
     max_length = 128   # Maximum sequence length for tokenization
-    batch_size = 100   # Number of samples per batch
+    batch_size = 400   # Number of samples per batch
 
     # Flag to determine which sentiment dataset to evaluate
     positive_sentiment = True
@@ -51,7 +44,7 @@ if __name__ == "__main__":
     else:
         df = pos_set  # Use positive sentiment dataset
     
-    # Extract a single tweet from the dataset for inspection (optional)
+    # Extract a single tweet from the dataset for inspection 
     tweet = df.loc[0, 'Text']
     
     # Apply the cleaning function to preprocess all tweets in the dataset
@@ -85,10 +78,12 @@ if __name__ == "__main__":
             outputs = model(input_ids=input_ids, attention_mask=attention_mask)[0]
             
             # Determine correct predictions based on the sentiment flag
+            # Class 2 represents positive sentiments
             if positive_sentiment:
                 # For positive sentiment, check if the score for class 2 exceeds class 0
                 correct = (outputs[:, 2] - outputs[:, 0] > 0).sum().item()
             else:
+                # Class 0 represents negative sentiments
                 # For negative sentiment, check if the score for class 2 is less than class 0
                 correct = (outputs[:, 2] - outputs[:, 0] < 0).sum().item()
             
