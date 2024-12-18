@@ -14,7 +14,20 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
     - **`run.ipynb`:** This notebook contains the code for our optimized solution to the project challenge. 
     - **`final_submission.csv`:** Final predictions using a linear SVM (C=1) with TfidfVectorizer (ngram_range=(1,3), min_df=1) and with the seed set to 27.
 
+- **src**
+   - **`data_cleaning`:**
+       - **`cleaning.py`:** Applies a series of functions (e.g removing punctuation, lemmatization...) to clean the twitter datasets.
+       - **`data_loader.py`:** Reads and loads the necessary data into a dataframe.
+       - **`dictionnaries.py`:** Contains the ekphrasis dictionnary used to replace symbols with words.
+   - **`helpers`:**
+       - **`data_loader.py`:** Defines the `TextDataset` class and the `create_dataloader` function. The `TextDataset` class handles the tokenization of text data and preparation of input features required by transformer models, converting text and target labels from a pandas DataFrame into tokenized PyTorch tensors. The `create_dataloader` function facilitates the creation of a PyTorch `DataLoader`, enabling efficient batching and shuffling of data for model training and evaluation.
+       - **`helper.py`:** Provides functions to load and preprocess labeled positive and negative tweets from text files and to apply a pre-trained transformer model to individual tweets for sentiment classification.
 
+    - **`utils_classifier.py`:** This script includes functions for loading and preprocessing tweet data, selecting and training classical machine learning models (Logistic Regression, Naive Bayes, SVM), evaluating their performance using metrics like F1 and accuracy scores, and saving the model predictions to a CSV file for submission.
+
+    - **`cfg.py`:** This module sets up essential configuration parameters, including random seeds for reproducibility, file paths for training and testing data, and hyperparameter grids for various machine learning models (Logistic Regression, Naive Bayes, SVM) used in the sentiment analysis pipeline.
+
+   
 
 - **Models** 
     - **`MLPwithText.py`:**- Constructs our MLP and functions for training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
