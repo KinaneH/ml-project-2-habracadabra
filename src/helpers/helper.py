@@ -1,17 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score
-import sklearn.metrics as metrics
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import roc_curve
-from sklearn.metrics import confusion_matrix
-
 from Experiments.twitter_exp import preprocess
+import torch
 
 
 def apply_model_to_tweet(tokenizer, model, tweet: str, max_length=500):
