@@ -8,6 +8,7 @@ import os
 
 from Models.MLPwithText import CustomMLP
 from src.helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.helper import create_csv_submission
 
 
 if __name__ == "__main__":
