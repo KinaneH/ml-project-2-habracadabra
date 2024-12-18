@@ -17,7 +17,7 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
    
 
 - **Models** 
-    - **`MLPwithText.py`:**- Constructs our MLP and functions for training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
+    - **`MLPwithText.py`:** Constructs our MLP and functions for training and evaluating an MLP classifier on text data using embeddings from a pretrained language model. It includes loading text files, tokenizing inputs, extracting CLS-based embeddings, and applying a simple MLP head for classification. The pipeline also covers model evaluation and generating predictions for submission.
 
 - **Experiments** 
     - **`train_model_on_small_set.py`:** Integrates a pretrained sentiment model with an MLP to load, tokenize, embed, train, save weights, and evaluate on a validation set. 
