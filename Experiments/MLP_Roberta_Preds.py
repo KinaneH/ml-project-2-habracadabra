@@ -121,6 +121,6 @@ if __name__ == "__main__":
     ids = range(1, len(all_preds) + 1)
 
     # Create CSV submission
-    output_filename = "submission_sof.csv"
+    output_filename = "submission_sofiya.csv"
     create_csv_submission(ids, all_preds, output_filename)
     print(f"Submission file created: {output_filename}")
