@@ -37,7 +37,7 @@ This project was created by Sofiya Malamud (sofiya.malamud@epfl.ch), Jack Pulcra
    - **`data_cleaning`:**
        - **`cleaning.py`:** Applies a series of functions (e.g removing punctuation, lemmatization...) to clean the twitter datasets.
        - **`data_loader.py`:** Reads and loads the necessary data into a dataframe.
-       - **`dictionnaries.py`:** Contains the ekphrasis dictionnary used to replace symbols with words.
+       - **`dictionaries.py`:** Contains the ekphrasis dictionary used to replace symbols with words.
    - **`helpers`:**
        - **`data_loader.py`:** Provides TextDataset and create_dataloader. TextDataset tokenizes text and converts inputs/labels to PyTorch tensors. create_dataloader builds a DataLoader for efficient batching and shuffling.
        - **`helper.py`:** Provides functions to load and preprocess labeled positive and negative tweets from text files and to apply a pre-trained transformer model to individual tweets for sentiment classification.
