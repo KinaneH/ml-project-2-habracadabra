@@ -14,9 +14,8 @@ import sklearn.metrics
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, f1_score
 
-from Experiments.experiment1_gpt import outputs
-from helpers.data_loader import create_dataloader, TextDataset
-from helpers.helper import load_data
+from src.helpers.data_loader import create_dataloader, TextDataset
+from src.helpers.helper import load_data
 
 # Dynamically add the project root to the Python path to ensure modules can be imported correctly
 PROJECT_ROOT = os.path.abspath(os.getcwd())
